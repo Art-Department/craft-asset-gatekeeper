@@ -1,6 +1,6 @@
 # Asset Gatekeeper
 
-A plugin to monitor what assets are being uploaded
+A plugin to limit file size and type (via extensions) for individual volumes
 
 ## Requirements
 
@@ -8,20 +8,9 @@ This plugin requires Craft CMS 5.7.0 or later, and PHP 8.2 or later.
 
 ## Installation
 
-You can install this plugin from the Plugin Store or with Composer.
-
-#### From the Plugin Store
-
-Go to the Plugin Store in your project’s Control Panel and search for “Asset Gatekeeper”. Then press “Install”.
-
-#### With Composer
-
 Open your terminal and run the following commands:
 
 ```bash
-# go to the project directory
-cd /path/to/my-project.test
-
 # tell Composer to load the plugin
 composer require art-department/craft-asset-gatekeeper
 
@@ -54,3 +43,21 @@ return [
     ],
 ];
 ```
+
+You can set the environment variables in the .env like this:
+
+```
+ASSET_GATEKEEPER_IMAGES_MAX_FILE_SIZE=10485760 # 10 MB
+ASSET_GATEKEEPER_IMAGES_ALLOWED_EXTENSIONS=jpg,jpeg,png,gif,webp,avif
+ASSET_GATEKEEPER_DOCUMENTS_MAX_FILE_SIZE=5242880 # 5 MB
+ASSET_GATEKEEPER_DOCUMENTS_ALLOWED_EXTENSIONS=pdf,doc,docx,xls,xlsx,ppt,pptx,txt
+```
+
+To allow all file types, you can set the allowed_extensions value to `*` :
+
+```
+ASSET_GATEKEEPER_DOCUMENTS_ALLOWED_EXTENSIONS=*
+```
+
+> [!NOTE]  
+> You are free to name the .env variables whatever you like, as long as they match the ones used in the config file.
