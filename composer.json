@@ -1,0 +1,44 @@
+{
+  "name": "art-department/craft-asset-gatekeeper",
+  "description": "A plugin to monitor what assets are being uploaded",
+  "type": "craft-plugin",
+  "license": "mit",
+  "support": {
+    "email": "support@artdepartment.co.uk"
+  },
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.7.0"
+  },
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "artdepartment\\craftassetgatekeeper\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "asset-gatekeeper",
+    "name": "Asset Gatekeeper",
+    "developer": "Art Department",
+    "documentationUrl": "",
+    "class": "artdepartment\\craftassetgatekeeper\\AssetGatekeeper"
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
+}
