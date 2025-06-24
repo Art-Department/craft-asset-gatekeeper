@@ -28,3 +28,29 @@ composer require art-department/craft-asset-gatekeeper
 # tell Craft to install the plugin
 ./craft plugin/install asset-gatekeeper
 ```
+
+### Configuration
+
+Create a new config file at `config/asset-gatekeeper.php`
+
+The following example shows how to configure the plugin to set maximum file sizes and allowed extensions for different asset volumes while using environment variables for flexibility and defaulting to sensible values:
+
+```php
+use craft\helpers\App;
+use craft\helpers\Assets;
+
+$defaultMaxFileSize = Assets::getMaxUploadSize(); // The Default max file size is set to the maximum upload size defined by Craft CMS
+
+return [
+    'volumes' => [
+        'images' => [
+            'max_filesize' => App::env('ASSET_GATEKEEPER_IMAGES_MAX_FILE_SIZE') ?: $defaultMaxFileSize,
+            'allowed_extensions' => explode(',', App::env('ASSET_GATEKEEPER_IMAGES_ALLOWED_EXTENSIONS') ?: implode(',', Assets::getFileKinds()['image']['extensions'])), // Default image extensions
+        ],
+        'documents' => [
+            'max_filesize' => App::env('ASSET_GATEKEEPER_DOCUMENTS_MAX_FILE_SIZE') ?: $defaultMaxFileSize,
+            'allowed_extensions' => explode(',', App::env('ASSET_GATEKEEPER_DOCUMENTS_ALLOWED_EXTENSIONS') ?: 'pdf,doc,docx,xls,xlsx,ppt,pptx,txt'), // Default document extensions
+        ],
+    ],
+];
+```
