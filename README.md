@@ -8,6 +8,19 @@ This plugin requires Craft CMS 5.7.0 or later, and PHP 8.2 or later.
 
 ## Installation
 
+Add the repository to your `composer.json` file:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/Art-Department/craft-asset-gatekeeper"
+    }
+]
+```
+
+Then run `composer update` to install the plugin.
+
 Open your terminal and run the following commands:
 
 ```bash
