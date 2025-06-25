@@ -19,8 +19,6 @@ Add the repository to your `composer.json` file:
 ]
 ```
 
-Then run `composer update` to install the plugin.
-
 Open your terminal and run the following commands:
 
 ```bash
